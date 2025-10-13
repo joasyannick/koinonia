@@ -1,0 +1,40 @@
+{
+  "name": "wp-synergia",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "test": "run-p type-check build-for-test",
+    "build-for-test": "run-s build-test-files build-for-wp",
+    "build-test-files": "vite build --mode test",
+    "build": "run-p type-check build-for-production",
+    "build-for-production": "run-s build-production-files build-for-wp",
+    "build-production-files": "vite build",
+    "build-for-wp": "cpy --flat dist/assets/index.js wp/assets/js && cpy --flat dist/assets/index.css wp/assets/css",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vueuse/core": "^12.0.0",
+    "leaflet": "^1.9.4",
+    "pinia": "^2.3.0",
+    "throttle-debounce": "^5.0.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.10.2",
+    "@types/throttle-debounce": "^5.0.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue-jsx": "^4.1.1",
+    "@vue-leaflet/vue-leaflet": "^0.10.1",
+    "@vue/tsconfig": "^0.7.0",
+    "cpy-cli": "^5.0.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.83.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.3",
+    "vue-tsc": "^2.1.10"
+  }
+}
